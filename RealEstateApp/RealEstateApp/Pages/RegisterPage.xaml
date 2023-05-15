@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RealEstateApp.Pages.RegisterPage"
+             Title="RegisterPage">
+    <VerticalStackLayout VerticalOptions="Center" Margin="20,0,20,0" Spacing="20">
+        <!--<Label Text="Welcome to .NET MAUI!" VerticalOptions="Center" HorizontalOptions="Center" />-->
+        <!--Will be adding:
+                A). Image Control - Maui Guy
+                B). Two Label Controls (Text Info)
+                C). Four Entry Controls (Full Name, Email, Phone, Password)
+                D). Button Control (Register Now)
+                E). "Stable? Control (Already have an account? Sign In - Redirect them to login page) -->
+        <Image Source="dotnet_bot" HorizontalOptions="Center" HeightRequest="80" WidthRequest="80"></Image>
+        <Label Text="Create a new account" TextColor="#101010" FontSize="Large" HorizontalOptions="Center" ></Label>
+        <Label Text="Please enter your information below to create a new account for using the app." TextColor="LightSlateGrey" FontSize="Small" HorizontalOptions="Center" ></Label>
+        <Entry x:Name="EntFullName" Placeholder="Full Name"></Entry>
+        <Entry x:Email="EntEmail" Placeholder="Email"></Entry>
+        <Entry x:Name="EntPhone" Placeholder="Phone"></Entry>
+    </VerticalStackLayout>
+</ContentPage>
