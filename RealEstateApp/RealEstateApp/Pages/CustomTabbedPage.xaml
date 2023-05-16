@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RealEstateApp.Pages.CustomTabbedPage"
+             xmlns:local="clr-namespace:RealEstateApp.Pages"
+             xmlns:andriod="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+             andriod:TabbedPage.ToolbarPlacement="Bottom"
+             SelectedTabColor="#1d94ab"
+             UnselectedTabColor="#78909c">
+    <local:HomePage Title="Home" IconImageSource="home_icon"></local:HomePage>
+    <local:BookmarksPage Title="Saved" IconImageSource="bookmark_icon"></local:BookmarksPage>
+    <local:SettingsPage Title="Settings" IconImageSource="settings_icon"></local:SettingsPage>
+</TabbedPage>
+
+
+
+
+<!-- Save...
+    
+    <TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="RealEstateApp.Pages.CustomTabbedPage"
+            xmlns:local="clr-namespace:RealEstateApp.Pages">
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Text="Home" IconImageSource="home_icon" />
+        <ToolbarItem Order="Primary" Text="Saved" IconImageSource="bookmark_icon" />
+        <ToolbarItem Order="Primary" Text="Settings" IconImageSource="settings_icon" />
+    </TabbedPage.ToolbarItems>
+    <TabbedPage.Children>
+        <NavigationPage Title="Home" IconImageSource="home_icon">
+            <x:Arguments>
+                <local:HomePage />
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage Title="Saved" IconImageSource="bookmark_icon">
+            <x:Arguments>
+                <local:BookmarksPage />
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage Title="Settings" IconImageSource="settings_icon">
+            <x:Arguments>
+                <local:SettingsPage />
+            </x:Arguments>
+        </NavigationPage>
+    </TabbedPage.Children>
+</TabbedPage>-->

@@ -60,8 +60,9 @@ namespace RealEstateApp.Services
             if (result.AccessToken.Any())
             {
                 // Application Isolated Storage
-                Preferences.Set("accesstoken", result.AccessToken);
-                Preferences.Set("userid", result.UserId);
+                Preferences.Set(AppSettings.AccessToken, result.AccessToken);
+                Preferences.Set(AppSettings.UserId, result.UserId);
+                Preferences.Set(AppSettings.UserName, result.UserName);
                 return true;
             }
             

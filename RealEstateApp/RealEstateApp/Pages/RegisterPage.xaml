@@ -15,7 +15,18 @@
         <Label Text="Create a new account" TextColor="#101010" FontSize="Large" HorizontalOptions="Center" ></Label>
         <Label Text="Please enter your information below to create a new account for using the app." TextColor="LightSlateGrey" FontSize="Small" HorizontalOptions="Center" ></Label>
         <Entry x:Name="EntFullName" Placeholder="Full Name"></Entry>
-        <Entry x:Email="EntEmail" Placeholder="Email"></Entry>
+        <Entry x:Name="EntEmail" Placeholder="Email"></Entry>
         <Entry x:Name="EntPhone" Placeholder="Phone"></Entry>
+        <Entry x:Name="EntPassword" Placeholder="Password" IsPassword="True"></Entry>
+        <Button x:Name="BtnRegister" Text="Register Now" HeightRequest="50" FontSize="Medium" 
+                BackgroundColor="#1d94ab" Clicked="BtnRegister_Clicked"></Button>
+
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Label Text="Already have an account?" FontSize="Medium" TextColor="#101010"></Label>
+            <Label Text="Sign In" FontSize="Medium" TextColor="#1d94ab"></Label>
+            <HorizontalStackLayout.GestureRecognizers>
+                <TapGestureRecognizer x:Name="TapLogin" Tapped="TapLogin_Tapped"></TapGestureRecognizer>
+            </HorizontalStackLayout.GestureRecognizers>
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

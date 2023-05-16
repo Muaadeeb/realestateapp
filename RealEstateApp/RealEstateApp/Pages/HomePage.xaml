@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RealEstateApp.Pages.HomePage"
+             Title="HomePage">
+    <ScrollView>
+        <Grid Margin="20" RowSpacing="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <VerticalStackLayout Grid.Row="0" Spacing="5">
+                <Label x:Name="LblUserName" FontSize="Large"></Label>
+                <Label Text="Find your best place to stay" FontSize="Medium"></Label>
+            </VerticalStackLayout>
+
+            <Frame Grid.Row="1" Padding="15">
+                <HorizontalStackLayout Spacing="20">
+                    <Image Source="search_icon" Aspect="AspectFit" WidthRequest="25"></Image>
+                    <Label Text="Search..." VerticalOptions="Center"></Label>
+                </HorizontalStackLayout>
+            </Frame>
+
+            <VerticalStackLayout Grid.Row="2" Spacing="20">
+                <Label Text="Categories" FontSize="Large"></Label>
+                <CollectionView x:Name="CvCategories" HeightRequest="100">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="20" Orientation="Horizontal"></LinearItemsLayout>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+
+                        <DataTemplate>
+                            <Frame Padding="5" CornerRadius="5">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" /> <!-- Column for the image -->
+                                        <ColumnDefinition Width="Auto" /> <!-- Column for the label -->
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0" Aspect="AspectFill" HeightRequest="50" WidthRequest="50" Source="{Binding FullImageUrl}" />
+                                    <Label Grid.Column="1" VerticalOptions="Center" FontSize="Medium" Text="{Binding Name}" />
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+
+
+                        <!-- This works Image on Top with Text Below <DataTemplate>
+                            <Frame Padding="5" CornerRadius="5">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" /> --><!-- Row for the image --><!--
+                                        <RowDefinition Height="Auto" />--><!-- Row for the label --><!--
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0" Aspect="AspectFill" HeightRequest="50" WidthRequest="50" Source="{Binding FullImageUrl}" />
+                                    <Label Grid.Row="1" VerticalOptions="Center" FontSize="Medium" Text="{Binding Name}" />
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>-->
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="3" Spacing="20">
+                <Label Text="Top Picks" FontSize="Large"></Label>
+                <CollectionView x:Name="VcTopPicks" HeightRequest="350"></CollectionView>
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>
