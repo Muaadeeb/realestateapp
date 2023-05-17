@@ -63,7 +63,41 @@
 
             <VerticalStackLayout Grid.Row="3" Spacing="20">
                 <Label Text="Top Picks" FontSize="Large"></Label>
-                <CollectionView x:Name="VcTopPicks" HeightRequest="350"></CollectionView>
+                <CollectionView x:Name="CvTopPicks" HeightRequest="350">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="20" Orientation="Horizontal"></LinearItemsLayout>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame CornerRadius="25" Padding="15" BackgroundColor="White">
+                                <Grid RowSpacing="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                
+                                    <Frame Grid.Row="0" 
+                                           HeightRequest="200" 
+                                           WidthRequest="250" 
+                                           CornerRadius="25" 
+                                           Padding="0"
+                                           IsClippedToBounds="True">
+                                        <Image Source="{Binding FullImageUrl}" Aspect="Fill"></Image>
+                                    </Frame>
+                                    <Label Grid.Row="1" FontSize="Subtitle" Text="{Binding Name}"></Label>
+                                    <Label Grid.Row="2" FontSize="Small" WidthRequest="250" LineBreakMode="TailTruncation" Text="{Binding Address}"></Label>
+                                    <Label Grid.Row="3" FontSize="Subtitle" TextColor="#1d94ab" Text="{Binding Price}"></Label>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+
+
+
+                </CollectionView>
             </VerticalStackLayout>
         </Grid>
     </ScrollView>
