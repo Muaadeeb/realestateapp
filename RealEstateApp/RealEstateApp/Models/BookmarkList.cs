@@ -20,6 +20,7 @@ namespace RealEstateApp.Models
 
         [JsonPropertyName("imageUrl")]
         public string ImageUrl { get; set; }
+        public string FullImageUrl => AppSettings.ApiUrl + ImageUrl;
 
         [JsonPropertyName("address")]
         public string Address { get; set; }

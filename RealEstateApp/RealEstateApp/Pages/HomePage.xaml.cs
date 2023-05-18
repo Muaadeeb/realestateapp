@@ -1,54 +1,69 @@
+using RealEstateApp.Models;
 using RealEstateApp.Services;
+using System.ComponentModel;
+
+
 
 namespace RealEstateApp.Pages;
 
 public partial class HomePage : ContentPage
 {
-	//public HomePage()
-	//{
-	//	InitializeComponent();
- //       LblUserName.Text = $"Hi {Preferences.Get(AppSettings.UserName, string.Empty)}";
- //       GetCategories();
- //       GetTrendingProperties();
+    public HomePage()
+    {
+        InitializeComponent();
+        LblUserName.Text = $"Hi {Preferences.Get(AppSettings.UserName, string.Empty)}";
+        GetCategories();
+        GetTrendingProperties();
+    }
 
- //   }
+    private async void GetCategories()
+    {
+        var categories = await ApiService.GetCategories();
+        CvCategories.ItemsSource = categories;
+    }
 
- //   private void GetTrendingProperties()
- //   {
- //       throw new NotImplementedException();
- //   }
+    private async void GetTrendingProperties()
+    {
+        var properties = await ApiService.GetTrendingProperties();
+        CvTopPicks.ItemsSource = properties;
 
- //   private async void GetCategories()
- //   {
- //       var categories = await ApiService.GetCategories();
- //       CvCategories.ItemsSource = categories;
- //   }
+    }
 
- 
-     public HomePage()
-     {
-         InitializeComponent();
-     }
+    //private void CvCategories_SelectionChanged(System.Object sender, SelectionChangedEventArgs e)
+    //{
+    //    var currentSelection = e.CurrentSelection.FirstOrDefault() as Category;
+    //    if (currentSelection is null) return;
 
-     protected override async void OnAppearing()
-     {
-         base.OnAppearing();
-         LblUserName.Text = $"Hi {Preferences.Get(AppSettings.UserName, string.Empty)}";
-         await LoadCategories();
-         await LoadTrendingProperties();
-     }
+    //    // Using PushAsync because this will automatically create a navigation bar for us.
+    //    // With PushModalAsync - we would need to design the navbar ourselves.
+    //    Navigation.PushAsync(new PropertiesListPage(currentSelection.Id, currentSelection.Name));
+    //    ((CollectionView)sender).SelectedItem = null;
+    //}
 
-     private async Task LoadCategories()
-     {
-         var categories = await ApiService.GetCategories();
-         CvCategories.ItemsSource = categories;
-     }
+    private void CvCategories_SelectionChanged(Object sender, SelectionChangedEventArgs e)
+    {
+        var currentSelection = e.CurrentSelection.FirstOrDefault() as Category;
+        if (currentSelection is null) return;
 
-     private async Task LoadTrendingProperties()
-     {
-         var properties = await ApiService.GetTrendingProperties();
-         CvTopPicks.ItemsSource = properties;
-         
-     }
+        // Using PushAsync because this will automatically create a navigation bar for us.
+        // With PushModalAsync - we would need to design the navbar ourselves.
+        Navigation.PushAsync(new PropertiesListPage(currentSelection.Id, currentSelection.Name));
+        ((CollectionView)sender).SelectedItem = null;
+    }
 
+    private void CvTopPicks_SelectionChanged(System.Object sender, SelectionChangedEventArgs e)
+    {
+        var currentSelection = e.CurrentSelection.FirstOrDefault() as TrendingProperty;
+        if (currentSelection is null) return;
+
+        // Using PushAsync because this will automatically create a navigation bar for us.
+        // With PushModalAsync - we would need to design the navbar ourselves.
+        Navigation.PushModalAsync(new PropertiesListPage(currentSelection.Id, currentSelection.Name));
+        ((CollectionView)sender).SelectedItem = null;
+    }
+
+    private void TapSearch_Tapped(System.Object sender, TappedEventArgs e)
+    {
+        Navigation.PushModalAsync(new SearchPage());
+    }
 }

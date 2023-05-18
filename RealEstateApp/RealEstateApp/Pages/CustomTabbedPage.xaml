@@ -7,7 +7,15 @@
              andriod:TabbedPage.ToolbarPlacement="Bottom"
              SelectedTabColor="#1d94ab"
              UnselectedTabColor="#78909c">
-    <local:HomePage Title="Home" IconImageSource="home_icon"></local:HomePage>
+
+    <NavigationPage Title="Home" IconImageSource="home_icon" BarBackgroundColor="#1d94ab" BarTextColor="White">
+        <x:Arguments>
+            <local:HomePage ></local:HomePage>
+        </x:Arguments>
+
+    </NavigationPage>
+
+    <!--<local:HomePage Title="Home" IconImageSource="home_icon"></local:HomePage>-->
     <local:BookmarksPage Title="Saved" IconImageSource="bookmark_icon"></local:BookmarksPage>
     <local:SettingsPage Title="Settings" IconImageSource="settings_icon"></local:SettingsPage>
 </TabbedPage>

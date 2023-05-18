@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RealEstateApp.Pages.HomePage"
-             Title="HomePage">
+             NavigationPage.HasNavigationBar="False">
     <ScrollView>
         <Grid Margin="20" RowSpacing="20">
             <Grid.RowDefinitions>
@@ -21,49 +21,34 @@
                     <Image Source="search_icon" Aspect="AspectFit" WidthRequest="25"></Image>
                     <Label Text="Search..." VerticalOptions="Center"></Label>
                 </HorizontalStackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="TapSearch" Tapped="TapSearch_Tapped"></TapGestureRecognizer>
+                </Frame.GestureRecognizers>
             </Frame>
 
             <VerticalStackLayout Grid.Row="2" Spacing="20">
                 <Label Text="Categories" FontSize="Large"></Label>
-                <CollectionView x:Name="CvCategories" HeightRequest="100">
+                <!--<CollectionView x:Name="CvCategories" HeightRequest="100" SelectionMode="Single" SelectionChanged="CvCategories_SelectionChanged">-->
+                <CollectionView x:Name="CvCategories" HeightRequest="100" SelectionMode="Single" SelectionChanged="CvCategories_SelectionChanged">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout ItemSpacing="20" Orientation="Horizontal"></LinearItemsLayout>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
-
                         <DataTemplate>
                             <Frame Padding="5" CornerRadius="5">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" /> <!-- Column for the image -->
-                                        <ColumnDefinition Width="Auto" /> <!-- Column for the label -->
-                                    </Grid.ColumnDefinitions>
+                                <HorizontalStackLayout Spacing="5">
                                     <Image Grid.Column="0" Aspect="AspectFill" HeightRequest="50" WidthRequest="50" Source="{Binding FullImageUrl}" />
                                     <Label Grid.Column="1" VerticalOptions="Center" FontSize="Medium" Text="{Binding Name}" />
-                                </Grid>
+                                </HorizontalStackLayout>
                             </Frame>
                         </DataTemplate>
-
-
-                        <!-- This works Image on Top with Text Below <DataTemplate>
-                            <Frame Padding="5" CornerRadius="5">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" /> --><!-- Row for the image --><!--
-                                        <RowDefinition Height="Auto" />--><!-- Row for the label --><!--
-                                    </Grid.RowDefinitions>
-                                    <Image Grid.Row="0" Aspect="AspectFill" HeightRequest="50" WidthRequest="50" Source="{Binding FullImageUrl}" />
-                                    <Label Grid.Row="1" VerticalOptions="Center" FontSize="Medium" Text="{Binding Name}" />
-                                </Grid>
-                            </Frame>
-                        </DataTemplate>-->
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="3" Spacing="20">
                 <Label Text="Top Picks" FontSize="Large"></Label>
-                <CollectionView x:Name="CvTopPicks" HeightRequest="350">
+                <CollectionView x:Name="CvTopPicks" HeightRequest="350" SelectionMode="Single" SelectionChanged="CvTopPicks_SelectionChanged">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout ItemSpacing="20" Orientation="Horizontal"></LinearItemsLayout>
                     </CollectionView.ItemsLayout>
